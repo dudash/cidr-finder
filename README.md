@@ -1,6 +1,8 @@
 # CIDR Finder
 This is a simple React demo app that let's you visualize information about CIDR addresses. It can come in handy when setting up networking in the cloud. This app can be used with OpenShift and leverage the automation capabilities of [RHOAR][https://developers.redhat.com/products/rhoar/overview/].
 
+<img src="https://developers.redhat.com/blog/wp-content/uploads/2018/03/RHOAR-Logo.png" alt="RHOAR logo" height="70" >
+
 Here's what it looks like:
 
 ![Screenshot](./.screens/cidrfinder.png)

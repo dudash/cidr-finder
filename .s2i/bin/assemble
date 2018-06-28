@@ -1,5 +1,0 @@
-
-#!/bin/bash
-set -e
-/usr/libexec/s2i/assemble
-npm install -g serve

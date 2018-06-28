@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+source /usr/libexec/s2i/env
+exec npm start

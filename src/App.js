@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import openshiftlogo from './openshift.png';
 import devlogo from './rhdevlogo.svg';
 import octocat from './octocat.png';
+import rhoar from './RHOAR-Logo.png';
 import './App.css';
 import {Netmask} from 'netmask'
 //import ip from 'ip'
@@ -82,6 +83,7 @@ class App extends Component {
           <div class="developer-links">
             <a href="https://github.com/dudash/cidr-finder"><img src={octocat} height="50" className="octocat" alt="github" /></a>
             <a href="https://developers.redhat.com"><img src={devlogo} height="50" className="devslogo" alt="devslink" /></a>
+            <a href="https://developers.redhat.com/products/rhoar/overview/"><img src={rhoar} height="50" className="rhoar" alt="rhoarlink" /></a>
           </div>
         </section>
 

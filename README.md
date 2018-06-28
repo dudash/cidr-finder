@@ -1,5 +1,5 @@
 # CIDR Finder
-This is a simple React demo app that let's you visualize information about CIDR addresses. It can come in handy when setting up networking in the cloud.
+This is a simple React demo app that let's you visualize information about CIDR addresses. It can come in handy when setting up networking in the cloud. This app can be used with OpenShift and leverage the automation capabilities of [RHOAR][https://developers.redhat.com/products/rhoar/overview/].
 
 Here's what it looks like:
 
@@ -26,12 +26,13 @@ First off, you need access to an OpenShift cluster.  Don't have an OpenShift clu
 Then just use the oc CLI tool to create a new project, build/containerize/deploy the app, and expose it outside the cluster.
  > `oc new-project cidr-finder `
 
- > `oc new-app https://github.com/dudash/cidr-finder`
+ > `oc new-app bucharestgold/centos7-s2i-nodejs:latest~https://github.com/dudash/cidr-finder.git`
 
  > `oc expose svc/cidr-finder`
 
 ## About the code
 * [Here's the autogen react docs](./README-REACT.md)
+* extra env vars for OpenShift are found in the `.s2i/environment` file
 
 ## Thanks to
 Thanks to the authors of [this CIDR project][2] as it served as the original inspiration for this app.

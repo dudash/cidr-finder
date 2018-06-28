@@ -44,8 +44,22 @@ Pulled 2018-06-27
     line-height: 60px;
     height: 66px;
     text-align: center;
-    font-size: 32px;
+    font-size: 24px;
     width: 5%;
+    padding: 0 15px;
+}
+
+.IPAddressSmall input {
+    outline: none;
+    -webkit-appearance: none;
+    border: 3px solid #e6e6e6;
+    border-radius: 5px;
+    background-color: #fff;
+    line-height: 60px;
+    height: 40px;
+    text-align: center;
+    font-size: 14px;
+    width: 10%;
     padding: 0 15px;
 }
 
@@ -92,6 +106,23 @@ Pulled 2018-06-27
     display: block;
     text-transform: uppercase;
     font-size: x-large;
+    font-weight: bold;
+    color: #355;
+}
+
+.NetmaskDetailsSmall span.block {
+    display: inline-block;
+    width: 50%;
+    margin-top: 45px;
+} 
+.NetmaskDetailsSmall span.value {
+    font-size: small;
+    color: #356;
+}
+.NetmaskDetailsSmall span.label {
+    display: block;
+    text-transform: uppercase;
+    font-size: medium;
     font-weight: bold;
     color: #355;
 }

@@ -3,7 +3,7 @@ This is a simple React demo app that let's you visualize information about CIDR 
 
 Here's what it looks like:
 
-![Screenshot](./.screens/cidrfinder.gif)
+![Screenshot](./.screens/cidrfinder.png)
 
 ## How to run this?
 

@@ -5,7 +5,7 @@ import devlogo from './rhdevlogo.svg';
 import octocat from './octocat.png';
 import './App.css';
 import {Netmask} from 'netmask'
-import ip from 'ip'
+//import ip from 'ip'
 
 class App extends Component {
   constructor(props) {

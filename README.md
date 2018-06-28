@@ -23,10 +23,12 @@ Run
 ### Run in OpenShift
 First off, you need access to an OpenShift cluster.  Don't have an OpenShift cluster?  That's OK, download the CDK for free here: [https://developers.redhat.com/products/cdk/overview/][1].
 
-Then just use the oc CLI tool:
+Then just use the oc CLI tool to create a new project, build/containerize/deploy the app, and expose it outside the cluster.
  > `oc new-project cidr-finder `
 
  > `oc new-app https://github.com/dudash/cidr-finder`
+
+ > `oc expose svc/cidr-finder`
 
 ## About the code
 * [Here's the autogen react docs](./README-REACT.md)

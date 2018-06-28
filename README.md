@@ -26,6 +26,9 @@ Then just use the oc CLI tool:
 
  > `oc new-app https://github.com/dudash/cidr-finder`
 
+## About the code
+* [Here's the autogen react docs](./README-REACT.md)
+
 ## Thanks to
 Thanks to the authors of [this CIDR project][2] as it served as the original inspiration for this app.
 

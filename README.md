@@ -9,17 +9,19 @@ Here's what it looks like:
 
 ### Run locally
 Clone this repo (optionally fork it first)
-> `git clone XXX`
+> `git clone https://github.com/dudash/cidr-finder.git`
+
+> `cd cidr-finder`
 
 Install the dependencies
-> `yarn`
+> `yarn install`
 
 Run
-> `npm start`
+> `yarn run start`
 
 
 ### Run in OpenShift
-First off, you need access to an OpenShift cluster.  Don't have an OpenShift cluster?  That's OK, download the CDK for free here: [https://developers.redhat.com/products/cdk/overview/][5].  Second you have to have [metrics enabled on your cluster][7].
+First off, you need access to an OpenShift cluster.  Don't have an OpenShift cluster?  That's OK, download the CDK for free here: [https://developers.redhat.com/products/cdk/overview/][1].
 
 Then just use the oc CLI tool:
  > `oc new-project cidr-finder `

@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import openshiftlogo from './openshift.png';
+import devlogo from './rhdevlogo.svg';
+import octocat from './octocat.png';
 import './App.css';
-import { Netmask } from 'netmask'
+import {Netmask} from 'netmask'
+import ip from 'ip'
 
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { inputcidr: [172, 31, 0, 0], inputmask: 16 }
+
+    this.state = { 
+       inputcidr: [172, 31, 0, 0],
+       inputmask: 16,
+       inputRawValue: "172.31.0.0/16" }
+
     this.handleIPChange = this.handleIPChange.bind(this);
   }
 
@@ -26,13 +35,14 @@ class App extends Component {
   render() {
     var checkThisCIDR = this.state.inputcidr.join('.') + '/' + this.state.inputmask;
     var netmaskDetails = new Netmask(checkThisCIDR)
-    console.log("checking " + checkThisCIDR);
+    //console.log("checking " + checkThisCIDR);
 
     return (
       <div className="App">
         
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <img src={openshiftlogo} className="App-logo" alt="openshift" />
           <h1 className="App-title">Let's find that CIDR</h1>
         </header>
         <p className="App-intro">Type in a CIDR block to see more info about it.</p>
@@ -67,6 +77,19 @@ class App extends Component {
         </div>
 
         <NetmaskDetails details={netmaskDetails}></NetmaskDetails>
+
+        <section>
+          <div class="developer-links">
+            <a href="https://github.com/dudash/cidr-finder"><img src={octocat} height="50" className="octocat" alt="github" /></a>
+            <a href="https://developers.redhat.com"><img src={devlogo} height="50" className="devslogo" alt="devslink" /></a>
+          </div>
+        </section>
+
+        <section>
+          <div class="wiki-link">
+          Confused? Maybe you need <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation">a refresher on what is CIDR notation?</a>
+          </div>
+        </section>
       </div>
     );
   }
@@ -75,24 +98,32 @@ class App extends Component {
 class NetmaskDetails extends Component {
   render() {
     return (
+      <div>
         <div className="NetmaskDetails">
           <span className="block">
-            <span className="value">{this.props.details.mask}</span>
-            <span className="label">Netmask</span>
+            <span className="value">{this.props.details.size.toLocaleString()}</span>
+            <span className="label">Available IPs</span>
           </span>
           <span className="block">
             <span className="value">{this.props.details.first}</span>
-            <span className="label">First IP</span>
+            <span className="label">Range Start</span>
           </span>
           <span className="block">
             <span className="value">{this.props.details.last}</span>
-            <span className="label">Last IP</span>
-          </span>
-          <span className="block">
-            <span className="value">{this.props.details.size.toLocaleString()}</span>
-            <span className="label">Count</span>
+            <span className="label">Range End</span>
           </span>
         </div>
+        <div className="NetmaskDetails">
+          <span className="block">
+            <span className="value">{this.props.details.mask}</span>
+            <span className="label">CIDR Netmask</span>
+          </span>
+          <span className="block">
+            <span className="value">{this.props.details.hostmask}</span>
+            <span className="label">Wildcard Mask</span>
+          </span>
+        </div>
+      </div>
     );
   }
 }

@@ -1,0 +1,87 @@
+/*
+Much CIDR style below was based on the work here:
+https://github.com/yuvadm/cidr.xyz/blob/master/style.scss
+Pulled 2018-06-27
+*/
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 1s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.IPAddress {
+  text-align: center;
+  font-family: monospace;
+  margin-top: 45px;
+}
+
+.Bits {
+  text-align: center;
+  font-family: monospace;
+  margin-top: 45px;
+}
+.Bits ol {
+  display: inline;
+  padding-left: 0px;
+  padding-right: 15px;
+}
+.Bits ol li.octet {
+    display: inline;
+}
+.Bits ol li.octet ol li.bit {
+    display: inline;
+    padding: 0.4em 0.6em;
+    margin-left: -1px;
+    border: 1px black solid;
+}
+/*    }
+    &:nth-child(1) ol li.bit.unmasked { background-color: lighten($color_a, $octet_lighten); }
+    &:nth-child(2) ol li.bit.unmasked { background-color: lighten($color_b, $octet_lighten); }
+    &:nth-child(3) ol li.bit.unmasked { background-color: lighten($color_c, $octet_lighten); }
+    &:nth-child(4) ol li.bit.unmasked { background-color: lighten($color_d, $octet_lighten); }
+    ol li.bit.masked {
+      background-color: lighten($color_e, $octet_lighten);
+      color: lighten($color_e, 22%);
+    }
+  }*/
+
+.NetmaskDetails span.block {
+    display: inline-block;
+    width: 20%;
+    margin-top: 45px;
+} 
+.NetmaskDetails span.value {
+    font-size: medium;
+    color: #356;
+}
+.NetmaskDetails span.label {
+    display: block;
+    text-transform: uppercase;
+    font-size: x-large;
+    font-weight: bold;
+    color: #355;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

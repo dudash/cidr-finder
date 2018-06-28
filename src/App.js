@@ -11,14 +11,27 @@ import {Netmask} from 'netmask'
 class App extends Component {
   constructor(props) {
     super(props)
-
     this.state = { 
        inputcidr: [172, 31, 0, 0],
        inputmask: 16,
-       inputRawValue: "172.31.0.0/16" }
-
+       inputRawValue: "172.31.0.0/16",
+       width: window.innerWidth }
     this.handleIPChange = this.handleIPChange.bind(this);
   }
+
+  componentWillMount() {
+    window.addEventListener('resize', this.handleWindowSizeChange);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowSizeChange);
+  }
+
+  handleWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth });
+    const isMobile = this.state.width <= 500;
+    this.setState({ isMobile: isMobile });
+  };
 
   handleIPChange(event) {
     var valueForcedNumeric = +event.target.value.replace(/[^0-9]/g, '')
@@ -38,62 +51,76 @@ class App extends Component {
     var netmaskDetails = new Netmask(checkThisCIDR)
     //console.log("checking " + checkThisCIDR);
 
-    return (
-      <div className="App">
-        
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <img src={openshiftlogo} className="App-logo" alt="openshift" />
-          <h1 className="App-title">Let's find that CIDR</h1>
-        </header>
-        <p className="App-intro">Type in a CIDR block to see more info about it.</p>
-
-        <div className="IPAddress">
-          <span className="quad">
-            <input className="quad" type="text" value={this.state.inputcidr[0]} quad-index={0} onChange={this.handleIPChange}/>
-            <span className="dot">.</span>
-          </span>
-          <span className="quad">
-            <input className="quad" type="text" value={this.state.inputcidr[1]} quad-index={1} onChange={this.handleIPChange}/>
-            <span className="dot">.</span>
-          </span>
-          <span className="quad">
-            <input className="quad" type="text" value={this.state.inputcidr[2]} quad-index={2} onChange={this.handleIPChange}/>
-            <span className="dot">.</span>
-          </span>
-          <span className="quad">
-            <input className="quad" type="text" value={this.state.inputcidr[3]} quad-index={3} onChange={this.handleIPChange}/>
-            <span className="dot">/</span>
-          </span>
-          <input className="mask" type="text" value={this.state.inputmask} quad-index="mask" onChange={this.handleIPChange}/>
+    if (this.state.isMobile) {
+      return (
+        <div className="App">  
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <img src={openshiftlogo} className="App-logo" alt="openshift" />
+            <h1 className="App-title">Let's find that CIDR</h1>
+          </header>
+          <p className="App-intro">Please resize the window or rotate your phone.</p>
+          <p className="App-intro">The smaller screen formatting for this webapp is not yet completed.</p>
         </div>
+      );
+    } else {
+      return (
+        <div className="App">
+          
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <img src={openshiftlogo} className="App-logo" alt="openshift" />
+            <h1 className="App-title">Let's find that CIDR</h1>
+          </header>
+          <p className="App-intro">Type in a CIDR block to see more info about it.</p>
 
-        <div className="Bits">
-          <ol>
-            <li className="octet"><ol>12345678</ol></li>
-            <li className="octet"><ol>12345678</ol></li>
-            <li className="octet"><ol>12345678</ol></li>
-            <li className="octet"><ol>12345678</ol></li>
-          </ol>
+          <div className="IPAddress">
+            <span className="quad">
+              <input className="quad" type="number" pattern="[0-9]*" value={this.state.inputcidr[0]} quad-index={0} onChange={this.handleIPChange}/>
+              <span className="dot">.</span>
+            </span>
+            <span className="quad">
+              <input className="quad" type="number" pattern="[0-9]*" value={this.state.inputcidr[1]} quad-index={1} onChange={this.handleIPChange}/>
+              <span className="dot">.</span>
+            </span>
+            <span className="quad">
+              <input className="quad" type="number" pattern="[0-9]*" value={this.state.inputcidr[2]} quad-index={2} onChange={this.handleIPChange}/>
+              <span className="dot">.</span>
+            </span>
+            <span className="quad">
+              <input className="quad" type="number" pattern="[0-9]*" value={this.state.inputcidr[3]} quad-index={3} onChange={this.handleIPChange}/>
+              <span className="dot">/</span>
+            </span>
+            <input className="mask" type="number" pattern="[0-9]*" value={this.state.inputmask} quad-index="mask" onChange={this.handleIPChange}/>
+          </div>
+
+          <div className="Bits">
+            <ol>
+              <li className="octet"><ol>12345678</ol></li>
+              <li className="octet"><ol>12345678</ol></li>
+              <li className="octet"><ol>12345678</ol></li>
+              <li className="octet"><ol>12345678</ol></li>
+            </ol>
+          </div>
+
+          <NetmaskDetails details={netmaskDetails}></NetmaskDetails>
+
+          <section>
+            <div class="developer-links">
+              <a href="https://github.com/dudash/cidr-finder"><img src={octocat} height="50" className="octocat" alt="github" /></a>
+              <a href="https://developers.redhat.com"><img src={devlogo} height="50" className="devslogo" alt="devslink" /></a>
+              <a href="https://developers.redhat.com/products/rhoar/overview/"><img src={rhoar} height="50" className="rhoar" alt="rhoarlink" /></a>
+            </div>
+          </section>
+
+          <section>
+            <div class="wiki-link">
+            Confused? Maybe you need <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation">a refresher on what is CIDR notation?</a>
+            </div>
+          </section>
         </div>
-
-        <NetmaskDetails details={netmaskDetails}></NetmaskDetails>
-
-        <section>
-          <div class="developer-links">
-            <a href="https://github.com/dudash/cidr-finder"><img src={octocat} height="50" className="octocat" alt="github" /></a>
-            <a href="https://developers.redhat.com"><img src={devlogo} height="50" className="devslogo" alt="devslink" /></a>
-            <a href="https://developers.redhat.com/products/rhoar/overview/"><img src={rhoar} height="50" className="rhoar" alt="rhoarlink" /></a>
-          </div>
-        </section>
-
-        <section>
-          <div class="wiki-link">
-          Confused? Maybe you need <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation">a refresher on what is CIDR notation?</a>
-          </div>
-        </section>
-      </div>
-    );
+      );
+    }
   }
 }
 

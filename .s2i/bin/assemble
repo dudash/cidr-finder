@@ -1,4 +1,5 @@
 
 #!/bin/bash
 set -e
-yarn build
+source /usr/libexec/s2i/env
+npm build

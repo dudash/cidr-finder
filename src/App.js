@@ -20,6 +20,7 @@ class App extends Component {
 
   componentWillMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
+    // TODO check for isMobile here
   }
 
   componentWillUnmount() {

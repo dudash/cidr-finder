@@ -49,7 +49,7 @@ class App extends Component {
   render() {
     var checkThisCIDR = this.state.inputcidr.join('.') + '/' + this.state.inputmask;
     var netmaskDetails = new Netmask(checkThisCIDR)
-    //console.log("checking " + checkThisCIDR);
+    console.log("checking " + checkThisCIDR);
 
     if (this.state.isMobile) {
       return (

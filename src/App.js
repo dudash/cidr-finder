@@ -34,7 +34,9 @@ class App extends Component {
   };
 
   handleIPChange(event) {
+    // https://coderwall.com/p/5tlhmw/converting-strings-to-number-in-javascript-pitfalls
     var valueForcedNumeric = +event.target.value.replace(/[^0-9]/g, '')
+
     if (event.target.attributes['quad-index'].value === "mask") {
       if (valueForcedNumeric <= 32) { this.setState({inputmask: valueForcedNumeric}) }
     } else {
@@ -112,32 +114,32 @@ class App extends Component {
 
           <div className="IPAddress">
             <span className="quad">
-              <input className="quad" type="number" pattern="[0-9]*" value={this.state.inputcidr[0]} quad-index={0} onChange={this.handleIPChange}/>
+              <input className="quad" pattern="[0-9]*" value={this.state.inputcidr[0]} quad-index={0} onChange={this.handleIPChange}/>
               <span className="dot">.</span>
             </span>
             <span className="quad">
-              <input className="quad" type="number" pattern="[0-9]*" value={this.state.inputcidr[1]} quad-index={1} onChange={this.handleIPChange}/>
+              <input className="quad" pattern="[0-9]*" value={this.state.inputcidr[1]} quad-index={1} onChange={this.handleIPChange}/>
               <span className="dot">.</span>
             </span>
             <span className="quad">
-              <input className="quad" type="number" pattern="[0-9]*" value={this.state.inputcidr[2]} quad-index={2} onChange={this.handleIPChange}/>
+              <input className="quad" pattern="[0-9]*" value={this.state.inputcidr[2]} quad-index={2} onChange={this.handleIPChange}/>
               <span className="dot">.</span>
             </span>
             <span className="quad">
-              <input className="quad" type="number" pattern="[0-9]*" value={this.state.inputcidr[3]} quad-index={3} onChange={this.handleIPChange}/>
+              <input className="quad" pattern="[0-9]*" value={this.state.inputcidr[3]} quad-index={3} onChange={this.handleIPChange}/>
               <span className="dot">/</span>
             </span>
             <input className="mask" type="number" pattern="[0-9]*" value={this.state.inputmask} quad-index="mask" onChange={this.handleIPChange}/>
           </div>
 
-          <div className="Bits">
+          {/*<div className="Bits">
             <ol>
               <li className="octet"><ol>12345678</ol></li>
               <li className="octet"><ol>12345678</ol></li>
               <li className="octet"><ol>12345678</ol></li>
               <li className="octet"><ol>12345678</ol></li>
             </ol>
-          </div>
+          </div>*/}
 
           <NetmaskDetails details={netmaskDetails} issmall={""}></NetmaskDetails>
 

@@ -29,8 +29,9 @@ class App extends Component {
 
   handleWindowSizeChange = () => {
     this.setState({ width: window.innerWidth });
-    const isMobile = this.state.width <= 665;
-    this.setState({ isMobile: isMobile });
+    //const isMobile = this.state.width <= 665;
+    //this.setState({ isMobile: isMobile });
+    this.setState({ isMobile: false });
   };
 
   handleIPChange(event) {

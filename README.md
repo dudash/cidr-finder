@@ -37,7 +37,7 @@ Then just use the oc CLI tool to create a new project, build/containerize/deploy
 * extra env vars for OpenShift are found in the `.s2i/environment` file
 
 ## Thanks to
-Thanks to the authors of [this CIDR project][2] as it served as the original inspiration for this app.
+Thanks to the authors of [this CIDR project][2] as it served as the original basis for this app.
 
 ## License
 Under the terms of the MIT.
